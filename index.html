@@ -14,7 +14,7 @@
 		<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
 		<link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 		<link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
-		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/style-sky-blue.css" rel="stylesheet" />
 	</head>
 
 	<body id="page-top">
@@ -464,15 +464,18 @@
 										</div>
 										<div>
 											<form
-												action=""
+												action="#"
 												method="post"
+												onsubmit="return sendEmail();"
 												role="form"
 												class="contactForm"
 											>
 												<div id="sendmessage">
 													Your message has been sent. Thank you!
 												</div>
-												<div id="errormessage"></div>
+												<div id="errormessage">
+													Your message has not been sent. Try Again!
+												</div>
 												<div class="row">
 													<div class="col-md-12 mb-3">
 														<div class="form-group">
@@ -521,6 +524,7 @@
 															<textarea
 																class="form-control"
 																name="message"
+																id="message"
 																id="body"
 																rows="5"
 																data-rule="required"
@@ -535,6 +539,7 @@
 															type="submit"
 															id="msgBut"
 															class="button button-a button-big button-rouded"
+															onclick="sendEmail(event)"
 														>
 															Send Message
 														</button>
@@ -654,5 +659,33 @@
 		<script src="contactform/contactform.js"></script>
 		<script src="js/main.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
+		<script>
+			function sendEmail(event) {
+				event.preventDefault();
+				Email.send({
+					name: document.getElementById('name').value,
+					Host: 'smtp.elasticemail.com',
+					PORT: 2525,
+					Username: 'nobel4g@gmail.com',
+					Password: 'F9DF229BBDD1D6E5C95EA7FAE53C0F01C27B',
+					To: 'mozumder0204@gmail.com',
+					From: document.getElementById('email').value,
+					Subject: document.getElementById('subject').value,
+					Body: document.getElementById('message').value,
+				}).then(function (response) {
+					if (response == 'OK') {
+						$('#sendmessage').addClass('show');
+						$('#errormessage').removeClass('show');
+						$('.contactForm').find('input, textarea').val('');
+					} else {
+						$('#sendmessage').removeClass('show');
+						$('#errormessage').addClass('show');
+						$('#errormessage').html(msg);
+						throw new Error('Error: ' + response.statusText);
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

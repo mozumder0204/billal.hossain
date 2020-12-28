@@ -127,25 +127,25 @@
 		},
 	});
 
-	$('#msgBut').click(function () {
-		$.ajax({
-			type: 'POST',
-			url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-			data: {
-				key: 'X6QULBjx5Dj4PBIKFMPe8w',
-				message: {
-					from_email: 'nobel4g@gmail.com',
-					to: [
-						{
-							email: 'mozumder0204@gmail.com',
-							name: 'Portfolio Anonymous',
-							type: 'to',
-						},
-					],
-					subject: 'Testing mail Success!!!!!',
-					html: 'Congratulationsssss!!!!',
-				},
-			},
-		});
-	});
+	// $('#msgBut').click(function () {
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+	// 		data: {
+	// 			key: 'X6QULBjx5Dj4PBIKFMPe8w',
+	// 			message: {
+	// 				from_email: 'nobel4g@gmail.com',
+	// 				to: [
+	// 					{
+	// 						email: 'mozumder0204@gmail.com',
+	// 						name: 'Portfolio Anonymous',
+	// 						type: 'to',
+	// 					},
+	// 				],
+	// 				subject: 'Testing mail Success!!!!!',
+	// 				html: 'Congratulationsssss!!!!',
+	// 			},
+	// 		},
+	// 	});
+	// });
 })(jQuery);
