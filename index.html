@@ -664,11 +664,12 @@
 			function sendEmail(event) {
 				event.preventDefault();
 				Email.send({
+					SecureToken : "59252bc9-40db-417d-bee9-dc6f39938ce9",
 					name: document.getElementById('name').value,
-					Host: 'smtp.elasticemail.com',
-					PORT: 2525,
+					Host: 'smtp.google.com',
+					PORT: 25,
 					Username: 'nobel4g@gmail.com',
-					Password: 'F9DF229BBDD1D6E5C95EA7FAE53C0F01C27B',
+					Password: 'Password',
 					To: 'mozumder0204@gmail.com',
 					From: document.getElementById('email').value,
 					Subject: document.getElementById('subject').value,
